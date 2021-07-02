@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SolarCoffee.Data.Models
 {
-    public class SaleOrder
+    public class SalesOrder
     {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
