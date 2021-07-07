@@ -26,28 +26,40 @@ export default class App extends Vue {}
 
 
 <style lang="scss">
+
+@import "@/scss/global.scss";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #8eb3d8;
+  display: flex;
+
+  .app-menu {
+    position: fixed;
+  }
+
+  .app-content {
+    padding: 1.2rem;
+    width: 90%;
+    margin: 1rem auto 1rem $menu-width;
+    text-align: left;
+  }
 }
 
-#nav {
-  padding: 30px;
+* {
+  margin: 0;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+a {
+  text-decoration: none;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+hr {
+border: 1px solid #eee;
+margin: 1rem 0;
 }
 </style>
 
-function Component(arg0: { name: string; components: { SideMenu: any; }; }) {
-  throw new Error("Function not implemented.");
-}
