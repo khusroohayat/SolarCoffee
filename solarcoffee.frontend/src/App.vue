@@ -1,10 +1,29 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <div class="app-menu">
+      <SideMenu />
+    </div>
+    <div class="app-content">
+      <router-view /> 
+    </div>
+    
   </div>
-  <router-view />
+  
 </template>
+
+<script lang="ts">
+ 
+import { Options, Vue } from "vue-class-component";
+import SideMenu from "./components/SideMenu.vue";
+
+@Options({
+  components: {
+    SideMenu,
+  },
+})
+export default class App extends Vue {}
+</script>
+
 
 <style lang="scss">
 #app {
@@ -28,3 +47,7 @@
   }
 }
 </style>
+
+function Component(arg0: { name: string; components: { SideMenu: any; }; }) {
+  throw new Error("Function not implemented.");
+}
