@@ -1,36 +1,48 @@
 <template>
-    <div class="btn-link">
-        <button @click="visitRoute" 
-        :class="['solar-button', { 'full-width': isFullWidth }]">
-            <slot></slot>
-        </button>
-    </div>
+  <div class="btn-link">
+    <button
+    v-if="link"
+      @click="visitRoute"
+      :class="['solar-button', { 'full-width': isFullWidth }]"
+      type="button"
+    >
+      <slot></slot>
+    </button>
+
+    <button
+      v-else
+      @click="onClick"
+      :class="['solar-button', { 'full-width': isFullWidth }]"
+      type="button"
+    >
+      <slot></slot>
+    </button>
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-  name: 'SolarButton',
+  name: "SolarButton",
   components: {},
   props: {
     link: String,
-    isFullWidth: Boolean
+    isFullWidth: Boolean,
   },
 })
-
-
-
 export default class SolarButton extends Vue {
-    
-    link!: string;
-    isFullWidth?: boolean;
+  link!: string;
+  isFullWidth?: boolean;
 
-    visitRoute() {
-        console.log(this.link);
-        
-        this.$router.push(this.link);
-    }
+  onClick() {
+    this.$emit('button:click');
+  }
+  visitRoute() {
+    console.log(this.link);
+
+    this.$router.push(this.link);
+  }
 }
 </script>
 
@@ -64,8 +76,7 @@ export default class SolarButton extends Vue {
 }
 
 .full-width {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
-
 </style>

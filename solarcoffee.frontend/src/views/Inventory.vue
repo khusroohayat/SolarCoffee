@@ -47,8 +47,19 @@
                 </td>
             </tr>
         </table>
-        <new-product-modal v-if="isNewProductVisible" />
-        <shipment-modal v-if="isShipmentVisible" />
+
+        <new-product-modal 
+            v-if="isNewProductVisible" 
+            @save:product="saveNewProduct"
+            @close="closeModals"
+        />
+
+        <shipment-modal 
+            v-if="isShipmentVisible" 
+            :inventory="inventory"
+            @save:shipment="saveNewShipment"
+            @close="closeModals" 
+        />
     </div>
 </template>
 
@@ -56,14 +67,15 @@
 import { Options, Vue } from "vue-class-component";
 import { IProductInventory } from "@/types/Product";
 import SolarButton from "@/components/SolarButton.vue";
-
+import NewProductModal from "@/components/modals/NewProductModal.vue";
+import ShipmentModal from "@/components/modals/ShipmentModal.vue";
 @Options({
     name: "Inventory",
-  components: { SolarButton },
+  components: { SolarButton, NewProductModal, ShipmentModal },
 })
 export default class Inventory extends Vue {
-    isNewProductVisible: boolean = false;
-    isShipmentVisible: boolean = false;
+    isNewProductVisible = false;
+    isShipmentVisible = false;
     inventory: IProductInventory[] = [
         {
             id: 1,
@@ -97,12 +109,21 @@ export default class Inventory extends Vue {
         }
     ];
 
-    showNewProductModal() {
+    closeModels() {
+        this.isShipmentVisible = false;
+        this.isNewProductVisible = false;
+    }
 
+    showNewProductModal() {
+        this.isNewProductVisible = true;
     }
 
     showShipMentModal() {
-        
+        this.isShipmentVisible = true;
     }
+
+    saveNewProduct() {}
+
+    saveNewShipment() {}
 }
 </script>
