@@ -6,10 +6,10 @@
         <hr />
 
         <div class="inventory-actions">
-            <solar-button @click.native="showNewProductModel" id="addNewBtn">
+            <solar-button @click.native="showNewProductModal" id="addNewBtn">
                 Add New Item
             </solar-button>
-            <solar-button @click.native="showShipmentModel" id="recieveShipmentBtn">
+            <solar-button @click.native="showShipMentModal" id="recieveShipmentBtn">
                 Recieve Shipment
             </solar-button>
         </div>
@@ -47,6 +47,8 @@
                 </td>
             </tr>
         </table>
+        <new-product-modal v-if="isNewProductVisible" />
+        <shipment-modal v-if="isShipmentVisible" />
     </div>
 </template>
 
@@ -60,6 +62,8 @@ import SolarButton from "@/components/SolarButton.vue";
   components: { SolarButton },
 })
 export default class Inventory extends Vue {
+    isNewProductVisible: boolean = false;
+    isShipmentVisible: boolean = false;
     inventory: IProductInventory[] = [
         {
             id: 1,
