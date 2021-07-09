@@ -1,16 +1,6 @@
 <template>
   <div class="btn-link">
     <button
-    v-if="link"
-      @click="visitRoute"
-      :class="['solar-button', { 'full-width': isFullWidth }]"
-      type="button"
-    >
-      <slot></slot>
-    </button>
-
-    <button
-      v-else
       @click="onClick"
       :class="['solar-button', { 'full-width': isFullWidth }]"
       type="button"
@@ -37,11 +27,6 @@ export default class SolarButton extends Vue {
 
   onClick() {
     this.$emit('button:click');
-  }
-  visitRoute() {
-    console.log(this.link);
-
-    this.$router.push(this.link);
   }
 }
 </script>

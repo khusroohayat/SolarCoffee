@@ -65,10 +65,11 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { IProductInventory } from "@/types/Product";
+import { IProduct, IProductInventory } from "@/types/Product";
 import SolarButton from "@/components/SolarButton.vue";
 import NewProductModal from "@/components/modals/NewProductModal.vue";
 import ShipmentModal from "@/components/modals/ShipmentModal.vue";
+import { IShipment } from "@/types/Shipment";
 @Options({
     name: "Inventory",
   components: { SolarButton, NewProductModal, ShipmentModal },
@@ -122,9 +123,17 @@ export default class Inventory extends Vue {
         this.isShipmentVisible = true;
     }
 
-    saveNewProduct() {}
+    saveNewProduct(newProduct: IProduct) {
+        console.log("SaveNewProduct");
+        console.log(newProduct);
+        
+        
+    }
 
-    saveNewShipment() {}
+    saveNewShipment(shipment: IShipment) {
+        console.log('saveNewShipment:');
+        console.log(shipment);
+    }
 
     
 }
