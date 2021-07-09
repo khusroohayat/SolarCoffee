@@ -7,10 +7,12 @@ export interface IProduct {
     price: number;
     isTaxable: boolean;
     isArchived: boolean;
-}
-export interface IProductInventory {
+  }
+  
+  export interface IProductInventory {
     id: number;
     product: IProduct;
     quantityOnHand: number;
     idealQuantity: number;
-}
+  }
+  

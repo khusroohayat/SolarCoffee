@@ -7,7 +7,11 @@
           <ul class="newProduct">
               <li>
                   <label for="isTaxable">Is this product taxable?</label>
-                  <input for="checkbox" id="isTaxable" v-model="newProduct.isTaxable" />
+                  <input
+            type="checkbox"
+            id="isTaxable"
+            v-model="newProduct.isTaxable"
+          />
               </li>
               <li>
                   <label for="productName">Name</label>
@@ -68,7 +72,8 @@ export default class NewProductModal extends Vue {
   qtyReceived = 0;
 
   close() {
-    this.$emit('close');
+    console.log("Close New Product");
+    this.$emit("close");
   }
 
   save() {

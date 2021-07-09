@@ -38,8 +38,10 @@ import { Options, Vue } from "vue-class-component";
 
 export default class SolarModal extends Vue {
     close() {
-        this.$emit("close");
-    }
+      console.log("Close Solar");
+      
+    this.$emit("close");
+  }
 }
 
 </script>

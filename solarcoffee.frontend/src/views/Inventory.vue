@@ -54,12 +54,12 @@
             @close="closeModals"
         />
 
-        <shipment-modal 
-            v-if="isShipmentVisible" 
-            :inventory="inventory"
-            @save:shipment="saveNewShipment"
-            @close="closeModals" 
-        />
+        <shipment-modal
+      v-if="isShipmentVisible"
+      :inventory="inventory"
+      @save:shipment="saveNewShipment"
+      @close="closeModals"
+    />
     </div>
 </template>
 
@@ -109,7 +109,7 @@ export default class Inventory extends Vue {
         }
     ];
 
-    closeModels() {
+    closeModals() {
         this.isShipmentVisible = false;
         this.isNewProductVisible = false;
     }
@@ -125,5 +125,7 @@ export default class Inventory extends Vue {
     saveNewProduct() {}
 
     saveNewShipment() {}
+
+    
 }
 </script>

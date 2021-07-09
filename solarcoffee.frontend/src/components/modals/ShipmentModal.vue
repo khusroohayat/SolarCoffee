@@ -35,7 +35,7 @@
 import { Options, Vue } from "vue-class-component";
 import SolarButton from "@/components/SolarButton.vue";
 import SolarModal from "@/components/modals/SolarModal.vue";
-import { IProduct } from "@/types/Product";
+import { IProduct, IProductInventory } from "@/types/Product";
 import { IShipment } from '@/types/Shipment';
 
 @Options({
@@ -43,9 +43,12 @@ import { IShipment } from '@/types/Shipment';
     SolarButton,
     SolarModal,
   },
+  props: {
+    inventory: Array,
+  },
 })
 export default class ShipmentModal extends Vue {
-  inventory: IProduct[] = [];
+  inventory!: IProductInventory[];
 
   selectedProduct: IProduct = {
     createdOn: new Date(),
@@ -70,6 +73,15 @@ export default class ShipmentModal extends Vue {
   }
   close() {
     this.$emit('close');
+  }
+
+  async initialize() {
+    console.log("inventory", this.inventory);
+    
+    }
+
+    async created() {
+    await this.initialize();
   }
 }
 </script>
